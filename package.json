@@ -1,0 +1,13 @@
+{
+  "name": "circleci-codecov-hello-matrix",
+  "version": "1.0.0",
+  "description": "Sample project highlighting CircleCI Matrix builds with Codecov",
+  "main": "index.js",
+  "repository": "https://github.com/heug/circleci-codecov-hello-matrix.git",
+  "author": "Eugene C <eugene@circleci.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "scripts/test"
+  }
+}
