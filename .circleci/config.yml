@@ -27,8 +27,15 @@ jobs:
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
-      - run: npm install
-      - run: yarn run test
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests and collect coverage
+          command: yarn run test
+      - run:
+          name: Upload coverage reports to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
 
 workflows:
   all-tests:
