@@ -8,6 +8,14 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "scripts/test"
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.0",
+    "jest": "^26.0.1",
+    "jest-junit": "^10.0.0",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5",
+    "yarn": "^1.22.4"
   }
 }
