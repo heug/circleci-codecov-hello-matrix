@@ -41,16 +41,16 @@ workflows:
   all-tests:
     jobs:
       - test:
-          name: "test_10.9.0"
+          name: "test_10_9_0"
           node-version: 10.9.0
       - test:
-          name: "test_11.9.0"
+          name: "test_11_9_0"
           node-version: 11.9.0
       - test:
-          name: "test_12.9.1"
+          name: "test_12_9_1"
           node-version: 12.9.1
       - test:
-          name: "test_13.9.0"
+          name: "test_13_9_0"
           node-version: 13.9.0
 
 # # Stage 2
