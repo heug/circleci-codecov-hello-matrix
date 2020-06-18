@@ -27,22 +27,30 @@ jobs:
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
-      - run: yarn test
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests and collect coverage
+          command: yarn run test
+      - run:
+          name: Upload coverage reports to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
 
 workflows:
   all-tests:
     jobs:
       - test:
-          name: "test-10.9.0"
+          name: "test_10_9_0"
           node-version: 10.9.0
       - test:
-          name: "test-11.9.0"
+          name: "test_11_9_0"
           node-version: 11.9.0
       - test:
-          name: "test-12.9.1"
+          name: "test_12_9_1"
           node-version: 12.9.1
       - test:
-          name: "test-13.9.0"
+          name: "test_13_9_0"
           node-version: 13.9.0
 
 # # Stage 2
