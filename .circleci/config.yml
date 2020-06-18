@@ -43,13 +43,13 @@ workflows:
       - test:
           name: "test_10.9.0"
           node_version: 10.9.0
-      _ test:
+      - test:
           name: "test_11.9.0"
           node_version: 11.9.0
-      _ test:
+      - test:
           name: "test_12.9.1"
           node_version: 12.9.1
-      _ test:
+      - test:
           name: "test_13.9.0"
           node-version: 13.9.0
 
