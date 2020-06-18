@@ -35,7 +35,7 @@ jobs:
           command: yarn run test
       - run:
           name: Upload coverage reports to Codecov
-          command: bash <(curl -s https://codecov.io/bash)
+          command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
 
 workflows:
   all-tests:
