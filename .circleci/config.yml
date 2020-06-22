@@ -59,6 +59,7 @@ workflows:
       - test:
           matrix:
             parameters:
+              name: ["test_10_9_0", "test_11_9_0", "test_12_9_1", "test_13_9_0"]
               node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
 
 # # Stage 3
