@@ -37,7 +37,7 @@ jobs:
           name: Upload coverage reports to Codecov
           # command: bash <(curl -s https://codecov.io/bash) -F << parameters.codecov-flag >>
 # # Stage 3
-          command: bash <(curl -s https://codecov.io/bash) -F ${CIRCLECI_JOB//[\.-]/_}
+          command: bash <(curl -s https://codecov.io/bash) -F ${$CIRCLECI_JOB//[\.-]/_}
 
 workflows:
   all-tests:
