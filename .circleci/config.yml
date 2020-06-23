@@ -38,7 +38,7 @@ jobs:
           # command: bash <(curl -s https://codecov.io/bash) -F << parameters.codecov-flag >>
 # # Stage 3
           environment:
-            FLAG_NAME: $CIRCLECI_JOB
+            FLAG_NAME: echo $CIRCLECI_JOB
           command: bash <(curl -s https://codecov.io/bash) -F "${FLAG_NAME//[\.-]/_}"
 
 workflows:
