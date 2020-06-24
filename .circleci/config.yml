@@ -5,9 +5,9 @@ executors:
     docker:
       - image: cimg/base:2020.01
 # # Stage 3
-  # macos:
-  #   macos:
-  #     xcode: 11.4
+#   macos:
+#     macos:
+#       xcode: 11.4
 
 orbs:
   node: circleci/node@3.0.0
@@ -19,9 +19,10 @@ jobs:
         type: string
     executor: linux
 # # Stage 3
-      # os:
-      #   type: executor
+    #   os:
+    #     type: executor
     # executor: << parameters.os >>
+
     steps:
       - checkout
       - node/install:
@@ -41,16 +42,12 @@ workflows:
   all-tests:
     jobs:
       - test:
-          name: "test_10_9_0"
           node-version: 10.9.0
       - test:
-          name: "test_11_9_0"
           node-version: 11.9.0
       - test:
-          name: "test_12_9_1"
           node-version: 12.9.1
       - test:
-          name: "test_13_9_0"
           node-version: 13.9.0
 
 # # Stage 2
@@ -62,6 +59,6 @@ workflows:
 # # Stage 3
       # - test:
       #     matrix:
-      #       parameters:
-      #         os: [linux, macos]
-      #         node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
+      #      parameters:
+      #        os: [linux, macos]
+      #        node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
