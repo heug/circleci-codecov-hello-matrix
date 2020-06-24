@@ -35,10 +35,10 @@ jobs:
           # command: yarn run test
           # # Stage 3
           command: |
-            if [ "<< parameters.os >>" = "linux" ]; then
-              yarn run test
-            else
+            if [ "<< parameters.os >>" = *"macos"* ]; then
               yarn run test-calculator
+            else
+              yarn run test
             fi
 
       - run:
