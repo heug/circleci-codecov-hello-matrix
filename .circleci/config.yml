@@ -36,13 +36,18 @@ jobs:
           # # Stage 3
           command: |
             if [[ $CIRCLE_JOB = *"macos" ]]; then
-              yarn run test-calculator
+              yarn run test-index
             else
               yarn run test
             fi
       - run:
           name: Upload coverage reports to Codecov
-          command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
+          command: |
+            if [[ $CIRCLE_JOB = *"macos" ]]; then
+              bash <(curl -s https://codecov.io/bash) -F macos
+            else
+              bash <(curl -s https://codecov.io/bash) -F linux
+            fi
 
 workflows:
   all-tests:
