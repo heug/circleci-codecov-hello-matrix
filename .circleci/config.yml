@@ -35,7 +35,7 @@ jobs:
           # command: yarn run test
           # # Stage 3
           command: |
-            if [ "<< parameters.os >>" = "*macos*" ]; then
+            if [ -x "$(xcodebuild -version)" ]; then
               yarn run test-calculator
             else
               yarn run test
