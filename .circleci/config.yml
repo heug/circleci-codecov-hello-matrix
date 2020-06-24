@@ -14,7 +14,6 @@ jobs:
       node-version:
         type: string
     executor: linux
-
     steps:
       - checkout
       - node/install:
