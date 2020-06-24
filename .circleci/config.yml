@@ -5,9 +5,9 @@ executors:
     docker:
       - image: cimg/base:2020.01
 # # Stage 3
-#   macos:
-#     macos:
-#       xcode: 11.4
+  macos:
+    macos:
+      xcode: 11.4
 
 orbs:
   node: circleci/node@3.0.0
@@ -17,12 +17,11 @@ jobs:
     parameters:
       node-version:
         type: string
-    executor: linux
+    # executor: linux
 # # Stage 3
-    #   os:
-    #     type: executor
-    # executor: << parameters.os >>
-
+      os:
+        type: executor
+    executor: << parameters.os >>
     steps:
       - checkout
       - node/install:
@@ -33,22 +32,34 @@ jobs:
           command: npm install
       - run:
           name: Run tests and collect coverage
-          command: yarn run test
+          # command: yarn run test
+          # # Stage 3
+          command: |
+            if [[ $CIRCLE_JOB = *"macos" ]]; then
+              yarn run test-index
+            else
+              yarn run test
+            fi
       - run:
           name: Upload coverage reports to Codecov
-          command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
+          command: |
+            if [[ $CIRCLE_JOB = *"macos" ]]; then
+              bash <(curl -s https://codecov.io/bash) -F macos
+            else
+              bash <(curl -s https://codecov.io/bash) -F linux
+            fi
 
 workflows:
   all-tests:
     jobs:
-      - test:
-          node-version: 10.9.0
-      - test:
-          node-version: 11.9.0
-      - test:
-          node-version: 12.9.1
-      - test:
-          node-version: 13.9.0
+      # - test:
+      #     node-version: 10.9.0
+      # - test:
+      #     node-version: 11.9.0
+      # - test:
+      #     node-version: 12.9.1
+      # - test:
+      #     node-version: 13.9.0
 
 # # Stage 2
       # - test:
@@ -57,8 +68,8 @@ workflows:
       #         node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
 
 # # Stage 3
-      # - test:
-      #     matrix:
-      #      parameters:
-      #        os: [linux, macos]
-      #        node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
+      - test:
+          matrix:
+            parameters:
+              os: [linux, macos]
+              node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]

@@ -1,6 +1,24 @@
+codecov:
+  bot: "thomasrockhu"
+
 coverage:
   status:
     project:
       default:
         target: 20%
         threshold: 1%
+      linux:
+        target: 80%
+        threshold: 1%
+      macos:
+        target: 100%
+        threshold: 1%
+
+flags:
+  linux:
+    paths:
+      - src/calculator
+      - src/index
+  macos:
+    paths:
+      - src/index
