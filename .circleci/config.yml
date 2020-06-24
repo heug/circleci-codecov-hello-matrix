@@ -35,7 +35,7 @@ jobs:
           # command: yarn run test
           # # Stage 3
           command: |
-            if [[ $CIRCLE_JOB = *"mac" ]]; then
+            if [[ $CIRCLE_JOB = *"macos" ]]; then
               yarn run test-calculator
             else
               yarn run test
