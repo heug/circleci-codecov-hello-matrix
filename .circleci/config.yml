@@ -41,20 +41,20 @@ jobs:
 workflows:
   all-tests:
     jobs:
-      - test:
-          node-version: 10.9.0
-      - test:
-          node-version: 11.9.0
-      - test:
-          node-version: 12.9.1
-      - test:
-          node-version: 13.9.0
+      # - test:
+      #     node-version: 10.9.0
+      # - test:
+      #     node-version: 11.9.0
+      # - test:
+      #     node-version: 12.9.1
+      # - test:
+      #     node-version: 13.9.0
 
 # # Stage 2
-      # - test:
-      #     matrix:
-      #       parameters:
-      #         node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
+      - test:
+          matrix:
+            parameters:
+              node-version: ["10.9.0", "11.9.0", "12.9.1", "13.9.0"]
 
 # # Stage 3
       # - test:
