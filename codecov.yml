@@ -1,3 +1,6 @@
+codecov:
+  bot: "thomasrockhu"
+
 coverage:
   status:
     project:
