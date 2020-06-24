@@ -5,9 +5,9 @@ executors:
     docker:
       - image: cimg/base:2020.01
 # # Stage 3
-#  macos:
-#    macos:
-#      xcode: 11.4
+#   macos:
+#     macos:
+#       xcode: 11.4
 
 orbs:
   node: circleci/node@3.0.0
@@ -18,9 +18,9 @@ jobs:
       node-version:
         type: string
 # # Stage 3
-#       os:
-#         type: executor
-#     executor: << parameters.os >>
+    #   os:
+    #     type: executor
+    # executor: << parameters.os >>
 
     steps:
       - checkout
@@ -35,7 +35,7 @@ jobs:
           command: yarn run test
       - run:
           name: Upload coverage reports to Codecov
-         command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
+          command: bash <(curl -s https://codecov.io/bash) -F $CIRCLE_JOB
 
 workflows:
   all-tests:
